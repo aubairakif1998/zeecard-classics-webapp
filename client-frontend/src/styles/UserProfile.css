@@ -1,0 +1,104 @@
+/* Updated CSS for the UserProfile component */
+.user-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #E52034;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar img {
+    width: 20%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    align-self: self-start;
+}
+
+.name {
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 20px;
+    color: #000000;
+}
+
+.designation {
+    font-size: 14px;
+    color: #555;
+    margin-left: 20px;
+    max-height: 20em;
+    /* Limit to 3 lines */
+    /* Set line height */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    /* Reset white-space property */
+    max-width: 200px;
+    text-align: left;
+    padding-bottom: 10px;
+    /* Align content to the left side */
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.edit-button,
+.add-link-button {
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.add-new-link-button {
+    background-color: #E52034;
+    color: #fff;
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover,
+.add-link-button:hover {
+    background-color: #555;
+}
+
+.divider {
+    width: 90%;
+    height: 1px;
+    /* Adjust the height as needed */
+    background-color: #E2E8F3;
+    /* Adjust the background color */
+    margin: 20px auto;
+    /* Center the divider horizontally */
+}

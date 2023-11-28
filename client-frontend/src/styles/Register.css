@@ -1,0 +1,142 @@
+.main {
+    display: flex;
+    color: #2E3E5C;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.section-signup {
+
+    min-width: 25%;
+    border-radius: 20px;
+    border: 1px solid #fbf7f7;
+    padding: 20px;
+    margin: 30px;
+    z-index: 1;
+    margin-top: 20px;
+    /* background-color: #FFFFFF; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-Signup {
+    background-color: #E52034;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px;
+}
+
+
+.heading {
+    color: #2E3E5C;
+    align-self: center;
+}
+
+.subheading {
+    color: #9FA5C0
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    padding-bottom: 5rem;
+}
+
+
+
+/* input[type="text"],
+input[type="password"],
+button,
+textarea {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+} */
+.input-textFieldSignUp {
+    font-size: 16px;
+    font-weight: 400;
+
+    padding: 10px;
+    color: #9FA5C0;
+    border-radius: 0.5rem;
+}
+
+
+
+.enabledbtn {
+    background-color: #E52034;
+    color: #FFFFFF;
+}
+
+.disabledBtn {
+    background-color: #db757f;
+    color: #FFFFFF;
+    padding: 0.5rem;
+}
+
+.instructions {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: #000;
+    color: #fff;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+}
+
+.instructions>svg {
+    margin-right: 0.25rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.line {
+    display: inline-block;
+}
+
+.password-toggle {
+    padding-left: 10px;
+    color: #9FA5C0;
+}
+
+.input-with-icon {
+
+    /* Replace 'icon.png' with your icon image */
+    background-size: 20px;
+    /* Set the size of your icon */
+    padding-left: 30px;
+    /* Adjust padding to make space for the icon */
+}
