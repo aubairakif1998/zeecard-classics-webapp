@@ -1,5 +1,5 @@
 import "./App.css";
-// import { useAuth } from "./auth";
+import { useAuth } from "./auth";
 // import { Button, Typography, Box } from "@mui/material";
 // import { Link } from "react-router-dom";
 // import * as apiService from "./utils/api-service";
@@ -17,8 +17,8 @@ import Profile from "./routes/Profile";
 import { RequireAuth, NoRequireAuth } from "./auth";
 import Settings from "./routes/Settings";
 function App() {
-  // const { user, loading, signOut, getRefreshToken, getUserIdToken } = useAuth();
-  // const [dataState, setDataState] = useState(undefined);
+  const { user, loading, signOut, getRefreshToken, getUserIdToken } = useAuth();
+  const [dataState, setDataState] = useState(undefined);
   // const usernameRef = useRef(undefined);
   // const dispatch = useDispatch();
   // const currentUserIdToken = useSelector((state) => state.currentUser.idToken);
@@ -26,41 +26,41 @@ function App() {
   // const currentUser = UserModel.fromMap(
   //   useSelector((state) => state.currentUser.user)
   // );
-  // useEffect(() => {
-  //   (async () => {
-  //     if (!loading) {
-  //       if (user) {
-  //         console.log("Authenticated User from Firebase", user);
-  //         console.log("Fetching user details from the server ", user);
-  //         setDataState("loading");
-  //         try {
-  //           const idToken = await getUserIdToken();
-  //           console.log("Frontend Token view", idToken);
+  useEffect(() => {
+    (async () => {
+      if (!loading) {
+        if (user) {
+          console.log("Authenticated User from Firebase", user);
+          console.log("Fetching user details from the server ", user);
+          setDataState("loading");
+          try {
+            const idToken = await getRefreshToken();
+            console.log("Frontend Token view", idToken);
 
-  //           const res = await apiService.getUserData({
-  //             idToken: idToken,
-  //             user: user,
-  //           });
+            const res = await apiService.getUserData({
+              idToken: idToken,
+              user: user,
+            });
 
-  //           console.log("FETCHED USER: ", res.user);
-  //           if (res.user) {
-  //             dispatch(
-  //               setUser({
-  //                 idToken,
-  //                 user: UserModel.fromMap(res.user).toMap(),
-  //               })
-  //             );
-  //           }
-  //           usernameRef.current = currentUser.uid;
-  //           setDataState("success");
-  //         } catch (error) {
-  //           console.log("err", error);
-  //           setDataState(error?.code);
-  //         }
-  //       }
-  //     }
-  //   })();
-  // }, [user, loading, dispatch, getUserIdToken, currentUserIdToken]);
+            console.log("FETCHED USER: ", res.user);
+            // if (res.user) {
+            //   dispatch(
+            //     setUser({
+            //       idToken,
+            //       user: UserModel.fromMap(res.user).toMap(),
+            //     })
+            //   );
+            // }
+            // usernameRef.current = currentUser.uid;
+            setDataState("success");
+          } catch (error) {
+            console.log("err", error);
+            setDataState(error?.code);
+          }
+        }
+      }
+    })();
+  }, [user, loading, dispatch, getUserIdToken, currentUserIdToken]);
   // useEffect(() => {
   //   const fetchData = async () => {
   //     if (!loading && user) {
@@ -120,66 +120,69 @@ function App() {
 
   //   fetchData();
   // }, [user, loading, currentUserIdToken, currentUser.uid, dispatch]);
-  const child = (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <Home />
-                <BottomNavbar />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <RequireAuth>
-                <Home />
-                <BottomNavbar />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <RequireAuth>
-                <Profile />
-                <BottomNavbar />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/settings"
-            element={
-              <RequireAuth>
-                <Settings />
-                <BottomNavbar />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/signin"
-            element={
-              <NoRequireAuth>
-                <LogIn />
-              </NoRequireAuth>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <NoRequireAuth>
-                <Register />
-              </NoRequireAuth>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+  const child =
+    dataState === "loading" ? (
+      <>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <RequireAuth>
+                  <Home />
+                  <BottomNavbar />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <RequireAuth>
+                  <Home />
+                  <BottomNavbar />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <RequireAuth>
+                  <Profile />
+                  <BottomNavbar />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <RequireAuth>
+                  <Settings />
+                  <BottomNavbar />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <NoRequireAuth>
+                  <LogIn />
+                </NoRequireAuth>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <NoRequireAuth>
+                  <Register />
+                </NoRequireAuth>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </>
+    ) : (
+      <>Loading User data</>
+    );
 
   return (
     <>

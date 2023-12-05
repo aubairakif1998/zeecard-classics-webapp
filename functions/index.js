@@ -36,7 +36,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 initializeApp(firebaseConfig);
-
+require("dotenv").config();
 const register = require("./express/routes/register");
 const login = require("./express/routes/login");
 const refreshCustomToken = require("./express/routes/refreshCustomToken");
@@ -45,13 +45,14 @@ const getUser = require("./express/routes/get-user");
 const app = express();
 app.use(cors());
 app.use(morgan("dev"));
-app.use(
-  cookieSession({
-    name: "session",
-    keys: ["1234567890"],
-    maxAge: 5 * 60 * 1000, // 24 hours
-  })
-);
+// app.use(
+//   cookieSession({
+//     name: "session",
+//     keys: ["1234567890"],
+//     maxAge: 5 * 60 * 1000, // 24 hours
+//   })
+// );
+console.log(` ${process.env.AUDIENCE}`);
 app.use(cookieParser());
 app.post("/login", validateLoginDetails, login);
 app.post("/register", validateEmailAndPassword, register);
