@@ -8,7 +8,7 @@
     margin-top: 120px;
 }
 
-.avatar {
+/* .avatar {
     border-radius: 50%;
     width: 100px;
     height: 100px;
@@ -23,6 +23,39 @@
     width: 20%;
     height: 100%;
     object-fit: contain;
+} */
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Set the height to 100% of the viewport height */
+}
+
+
+
+.avatar {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #E52034;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Ensure the image stays within the circular border */
+}
+
+.avatar img {
+    width: 100%;
+    /* Use 100% width to ensure it's contained within the circular avatar */
+    height: 100%;
+    object-fit: cover;
+    /* Preserve the aspect ratio and cover the entire container */
+    border-radius: 50%;
+    /* Apply border-radius to the image, not the container */
 }
 
 .info {

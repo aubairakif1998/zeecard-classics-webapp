@@ -18,38 +18,6 @@ import {
 export function RequireAuth({ children }) {
   let auth = useAuth();
   let location = useLocation();
-  // const dispatch = useDispatch();
-  // const token = useSelector((state) => state.currentUser.token);
-  // const updateIdToken = (newIdToken) => {
-  //   dispatch(setUserIdToken({ token: newIdToken }));
-  // };
-  // useEffect(() => {
-  //   (async () => {
-  //     if (!auth.loading) {
-  //       if (auth.user) {
-  //         console.log(
-  //           "Middleware Authenticated User from Auth-Firebase",
-  //           auth.user
-  //         );
-  //         // try {
-  //         //   const idToken = await auth.getRefreshToken();
-  //         //   console.log("Frontend Token view", idToken);
-  //         //   const res = await apiService.getUserData({
-  //         //     idToken: idToken,
-  //         //     user: auth.user,
-  //         //   });
-
-  //         //   if (idToken) {
-  //         //     updateIdToken(idToken);
-  //         //   }
-  //         // } catch (error) {
-  //         //   console.log("err", error);
-  //         // }
-  //       }
-  //     }
-  //   })();
-  // }, [auth.loading, auth.user]);
-
   return auth.loading ? (
     <></>
   ) : auth.user ? (

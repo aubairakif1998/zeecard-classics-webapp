@@ -20,7 +20,12 @@ const firebaseAuth = async (req, res, next) => {
     let checkRevoked = true;
     const idToken = req.headers["authorization"].match(regex)?.[1];
     console.log("ID-TOKEN: ", idToken);
+    const res = await getAuth().verifyIdToken(idToken, checkRevoked);
+    if (res) {
+      console.log(res);
+    }
     req.token = await getAuth().verifyIdToken(idToken, checkRevoked);
+
     next();
   } catch (err) {
     if (err.code == "auth/user-disabled") {
