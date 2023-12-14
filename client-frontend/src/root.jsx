@@ -18,13 +18,11 @@ const Root = () => {
         console.log("Fetching user details from the server ", user);
         try {
           const idToken = await getRefreshToken();
-          console.log("Frontend Token view", idToken);
           const { found, data } = await apiService.getUserData({
             idToken,
             uid: user.uid,
           });
           if (found) {
-            console.log("FETCHED USER:", data);
             setDataState("success");
             navigate(`${user.uid}/home`);
           } else {

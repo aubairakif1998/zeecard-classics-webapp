@@ -19,6 +19,9 @@ import Profile from "./routes/Profile";
 import { RequireAuth, NoRequireAuth } from "./auth";
 import Settings from "./routes/Settings";
 import CompleteProfile from "./routes/Complete-Profile";
+import AddLinks from "./routes/AddLinks";
+import LinkModal from "./routes/LinkModal";
+
 import UnauthorizedPage from "./routes/UnauthorizedPage";
 
 function App() {
@@ -48,6 +51,22 @@ function App() {
             element={
               <>
                 <Profile />
+              </>
+            }
+          />
+          <Route
+            path="/:id/profile/add-links"
+            element={
+              <>
+                <AddLinks />
+              </>
+            }
+          />
+          <Route
+            path="/:id/profile/add-links/:linktype"
+            element={
+              <>
+                <LinkModal />
               </>
             }
           />

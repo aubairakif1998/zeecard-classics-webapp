@@ -24,7 +24,6 @@ const Home = () => {
             uid: id,
           });
           if (found) {
-            console.log("FETCHED USER:", data);
             setDataState("success");
           } else {
             console.log("User not found. Redirecting...");

@@ -27,7 +27,7 @@ if (firebaseApp) {
 
 const register = require("./express/routes/register");
 const login = require("./express/routes/login");
-const refreshCustomToken = require("./express/routes/refreshCustomToken");
+// const refreshCustomToken = require("./express/routes/refreshCustomToken");
 const firebaseAuth = require("./express/middleware/firebase-auth");
 const getUser = require("./express/routes/get-user");
 const completeProfile = require("./express/routes/complete-profile");
@@ -41,5 +41,5 @@ app.post("/login", validateLoginDetails, login);
 app.post("/register", validateEmailAndPassword, register);
 app.get("/users/:id", firebaseAuth, getUser);
 app.post("/users/:id/complete-profile", firebaseAuth, completeProfile);
-app.get("/refresh-token/:id", refreshCustomToken);
+// app.get("/refresh-token/:id", refreshCustomToken);
 exports.api = functions.https.onRequest(app);

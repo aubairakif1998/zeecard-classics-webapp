@@ -1,0 +1,115 @@
+.profile-screen-container {
+    font-family: Arial, sans-serif;
+}
+
+.app-bar {
+    /* background-color: #f0f0f0; */
+    padding: 10px;
+    color: #161722;
+    display: flex;
+    justify-content: space-between;
+    /* Adjusted to space-between */
+    align-items: center;
+}
+
+.qr-code-icon {
+    cursor: pointer;
+    margin-left: auto;
+
+}
+
+/* .profile-body {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture {
+    background-color: #ddd;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.username {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.bio {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    color: #555;
+}
+
+.stats svg {
+    margin-right: 5px;
+}
+
+.action-buttons {
+    display: flex;
+    margin: 20px 0;
+}
+
+.action-buttons button {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+} */
+
+/* .links-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.link-item {
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.link-item img {
+    margin-right: 10px;
+}
+
+.add-link-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-link-button button {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} */

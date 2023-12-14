@@ -9,7 +9,6 @@ import "../styles/UserProfile.css";
 // Updated UserProfile component
 
 const UserProfile = ({ name, designation, avatarSrc }) => {
-  console.log(avatarSrc);
   return (
     <>
       <div className="user-profile">

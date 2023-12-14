@@ -1,7 +1,6 @@
 // components/BottomNavBar.tsx
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useParams } from "react-router-dom"; // Import useParams hook
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const BottomNavbar = () => {
   const location = useLocation();

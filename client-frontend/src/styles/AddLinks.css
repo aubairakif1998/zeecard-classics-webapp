@@ -1,0 +1,9 @@
+ .app-bar {
+     /* background-color: #f0f0f0; */
+     padding: 10px;
+     color: #161722;
+     display: flex;
+     justify-content: space-between;
+     /* Adjusted to space-between */
+     align-items: center;
+ }
