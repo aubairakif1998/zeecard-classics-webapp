@@ -43,7 +43,9 @@ class UserModel {
     this.bio = bio ?? null;
     this.dob = dob ? new Date(dob) : null;
     this.gender = gender ?? null;
-    this.profilePicture = profilePicture ?? null;
+    this.profilePicture =
+      profilePicture ??
+      "https://firebasestorage.googleapis.com/v0/b/zeecard-dev.appspot.com/o/default-avatar-profile-icon-vector-260nw-1725655669.png?alt=media&token=87f0869f-98a7-4007-93e7-276612f5c457";
     this.isVerified = isVerified ?? null;
     this.timesZeecard = timesZeecard ?? null;
     this.isPrivate = isPrivate ?? false;

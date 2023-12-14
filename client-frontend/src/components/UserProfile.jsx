@@ -13,10 +13,10 @@ const UserProfile = ({ name, designation, avatarSrc }) => {
     <>
       <div className="user-profile">
         <div className="avatar">
-          <img src="u_image-edit.png" alt={name} />
+          <img src={avatarSrc} alt={avatarSrc} />
         </div>
         <div className="info">
-          <div className="name">@alexjorge</div>
+          <div className="name">{name}</div>
           <div className="designation">{designation}</div>
         </div>
       </div>

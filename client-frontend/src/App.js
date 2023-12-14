@@ -8,118 +8,23 @@ import "./App.css";
 // import BottomNavBar from "./components/BottomNavbar";
 // import { useLocation, Navigate } from "react-router-dom";
 // import ReactDOM from "react-dom/client";
+// import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LogIn from "./routes/LogIn";
 import Home from "./routes/Home";
+import Root from "./root";
 import Register from "./routes/Register";
-import BottomNavbar from "./components/BottomNavbar";
+// import BottomNavbar from "./components/BottomNavbar";
 import Profile from "./routes/Profile";
 import { RequireAuth, NoRequireAuth } from "./auth";
 import Settings from "./routes/Settings";
+import CompleteProfile from "./routes/Complete-Profile";
+import AddLinks from "./routes/AddLinks";
+import LinkModal from "./routes/LinkModal";
+
+import UnauthorizedPage from "./routes/UnauthorizedPage";
+
 function App() {
-  // const { user, loading, signOut, getRefreshToken, getUserIdToken } = useAuth();
-  // const [dataState, setDataState] = useState(undefined);
-  // const usernameRef = useRef(undefined);
-  // const dispatch = useDispatch();
-  // const currentUserIdToken = useSelector((state) => state.currentUser.idToken);
-  // let location = useLocation();
-  // const currentUser = UserModel.fromMap(
-  //   useSelector((state) => state.currentUser.user)
-  // );
-  // useEffect(() => {
-  //   (async () => {
-  //     if (!loading) {
-  //       if (user) {
-  //         console.log("Authenticated User from Firebase", user);
-  //         console.log("Fetching user details from the server ", user);
-  //         setDataState("loading");
-  //         try {
-  //           const idToken = await getUserIdToken();
-  //           console.log("Frontend Token view", idToken);
-
-  //           const res = await apiService.getUserData({
-  //             idToken: idToken,
-  //             user: user,
-  //           });
-
-  //           console.log("FETCHED USER: ", res.user);
-  //           if (res.user) {
-  //             dispatch(
-  //               setUser({
-  //                 idToken,
-  //                 user: UserModel.fromMap(res.user).toMap(),
-  //               })
-  //             );
-  //           }
-  //           usernameRef.current = currentUser.uid;
-  //           setDataState("success");
-  //         } catch (error) {
-  //           console.log("err", error);
-  //           setDataState(error?.code);
-  //         }
-  //       }
-  //     }
-  //   })();
-  // }, [user, loading, dispatch, getUserIdToken, currentUserIdToken]);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (!loading && user) {
-  //       try {
-  //         console.log("Authenticated User from Firebase", user);
-  //         console.log("Fetching user details from the server ", user);
-  //         setDataState("loading");
-  //         const userTempIdToken = await user.getIdToken(true);
-  //         dispatch(
-  //           setUser({ currentUser: user, currentUserIdToken: userTempIdToken })
-  //         );
-  //         await getUserDataWithRetry();
-  //       } catch (error) {
-  //         console.error("Error fetching user data:", error);
-  //         if (
-  //           error.error.code === "unauthenticated" ||
-  //           error.error.code === "Token has been revoked"
-  //         ) {
-  //           // If the error is due to unauthenticated or revoked token, try to refresh the token
-  //           try {
-  //             console.log("userRetryIdToken", userRetryIdToken);
-  //             const userRetryIdToken = await user.getIdToken(true);
-  //             dispatch(
-  //               setUser({
-  //                 currentUser: user,
-  //                 currentUserIdToken: userRetryIdToken,
-  //               })
-  //             );
-
-  //             // Token refreshed successfully, retry the getUserData
-  //             await getUserDataWithRetry();
-  //           } catch (refreshError) {
-  //             console.error("Error refreshing token:", refreshError);
-  //             setDataState(refreshError.code);
-  //           }
-  //         } else {
-  //           // If it's not an unauthenticated or revoked token error, set the dataState accordingly
-  //           setDataState(error.error.code);
-  //         }
-  //       }
-  //     }
-  //   };
-
-  //   const getUserDataWithRetry = async () => {
-  //     try {
-  //       const res = await apiService.getUserData({
-  //         currentUserIdToken,
-  //         userId: currentUser.uid,
-  //       });
-  //       usernameRef.current = res.user.username;
-  //       setDataState("success");
-  //     } catch (error) {
-  //       console.error("Error fetching user data after token refresh:", error);
-  //       setDataState(error.error.code);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [user, loading, currentUserIdToken, currentUser.uid, dispatch]);
   const child = (
     <>
       <BrowserRouter>
@@ -128,36 +33,49 @@ function App() {
             path="/"
             element={
               <RequireAuth>
-                <Home />
-                <BottomNavbar />
+                <Root />
               </RequireAuth>
             }
           />
           <Route
-            path="/home"
+            path="/:id/home"
             element={
-              <RequireAuth>
+              <>
+                {" "}
                 <Home />
-                <BottomNavbar />
-              </RequireAuth>
+              </>
             }
           />
           <Route
-            path="/profile"
+            path="/:id/profile"
             element={
-              <RequireAuth>
+              <>
                 <Profile />
-                <BottomNavbar />
-              </RequireAuth>
+              </>
             }
           />
           <Route
-            path="/settings"
+            path="/:id/profile/add-links"
             element={
-              <RequireAuth>
+              <>
+                <AddLinks />
+              </>
+            }
+          />
+          <Route
+            path="/:id/profile/add-links/:linktype"
+            element={
+              <>
+                <LinkModal />
+              </>
+            }
+          />
+          <Route
+            path="/:id/settings"
+            element={
+              <>
                 <Settings />
-                <BottomNavbar />
-              </RequireAuth>
+              </>
             }
           />
           <Route
@@ -176,6 +94,15 @@ function App() {
               </NoRequireAuth>
             }
           />
+          <Route
+            path="/:id/complete-profile"
+            element={
+              <RequireAuth>
+                <CompleteProfile />
+              </RequireAuth>
+            }
+          />
+          <Route path="/UnauthorizedPage" element={<UnauthorizedPage />} />
         </Routes>
       </BrowserRouter>
     </>

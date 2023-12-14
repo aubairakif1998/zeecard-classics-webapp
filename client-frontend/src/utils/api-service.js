@@ -20,23 +20,49 @@ export async function signUp({ email, password, username }) {
   return res.data;
 }
 
-export async function getUserData({ idToken, user }) {
+export async function getUserData({ idToken, uid }) {
   let res;
+
   try {
-    const url = `${apiUrl}/users/${user.uid}`;
+    const url = `${apiUrl}/users/${uid}`;
     res = await axios.get(url, {
       headers: {
         authorization: `Bearer ${idToken}`,
       },
     });
 
-    return res.data;
+    return { found: true, data: res.data };
   } catch (err) {
     console.log("Error while fetching user data", err.response.data);
+    if (err.response.data.error.code === "user-not-found") {
+      console.log("USER NOT FOUND");
+      return { found: false };
+    }
     throw err.response.data;
   }
 }
+export async function completeProfile({ user, idToken, username }) {
+  try {
+    const url = `${apiUrl}/users/${user.uid}/complete-profile`;
+    const res = await axios.post(
+      url,
+      {
+        username,
+        email: user.email,
+        uid: user.uid,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${idToken}`,
+        },
+      }
+    );
 
+    return res;
+  } catch (err) {
+    console.log("Error while completing profile", err);
+  }
+}
 // export async function verifyUserIdToken({ idToken }) {
 //   let res;
 //   try {

@@ -14,26 +14,23 @@ import { useAuth } from "../auth";
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  const { signIn } = useAuth();
-
+  const { signIn, signInWithGoogle } = useAuth();
   const userRef = useRef();
   const errRef = useRef();
-
   const [userEmail, setUserEmail] = useState("");
   const [pwd, setPwd] = useState("");
-  //   const [errMsg, setErrMsg] = useState("");
-  //   const [success, setSuccess] = useState(false);
-
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const handleGoogleSignIn = () => {
+    signInWithGoogle();
+  };
   useEffect(() => {
     if (userRef.current) {
       userRef.current.focus();
     }
   }, []);
-
   useEffect(() => {
     setErrorMessage("");
   }, [userEmail, pwd]);
-  const [isSigningIn, setIsSigningIn] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,6 +49,10 @@ const Login = () => {
         }
         if (code === "wrong-password") {
           setErrorMessage("Email / password is wrong.");
+          return;
+        }
+        if (code === "user-disabled") {
+          setErrorMessage("user-disabled.");
           return;
         }
       }
@@ -139,6 +140,7 @@ const Login = () => {
                 marginTop: 2,
               }}
             />
+            <button onClick={handleGoogleSignIn}>Sign in with Google</button>
           </form>
         </section>{" "}
         <p>
